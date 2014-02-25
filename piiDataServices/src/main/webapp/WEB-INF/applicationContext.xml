@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo.xsd">
+
+    <context:component-scan base-package="com.frankmoley.services.pii"/>
+
+    <mvc:annotation-driven/>
+
+    <bean id="mongo" class="com.mongodb.Mongo">
+        <constructor-arg name="host" value="127.0.0.1"/>
+        <constructor-arg name="port" value="27017"/>
+    </bean>
+
+    <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate" depends-on="mongo">
+        <constructor-arg name="mongo" ref="mongo"/>
+        <constructor-arg name="databaseName" value="pii"/>
+    </bean>
+
+    <mongo:repositories base-package="com.frankmoley.services.pii.data.repository"
+                        mongo-template-ref="mongoTemplate"/>
+</beans>
