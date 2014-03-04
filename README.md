@@ -25,7 +25,7 @@ This directory contains the PDF version of the presentation
 
 
 ## Project Background ##
-This project concept was duel serving. First I needed a real life project to use for demos for the presentation. I am a firm believer in demo software being conceptually real.
+This project concept was dual serving. First I needed a real life project to use for demos for the presentation. I am a firm believer in demo software being conceptually real.
 This software is also inline with my Master's Project for the University of Kansas MSIT program, where I am working on a system to help protect enterprise collection, storage,
 and distribution of customer Personal Identifiable Information (PII) data.
 
