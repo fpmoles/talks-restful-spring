@@ -6,11 +6,9 @@
 
     <context:component-scan base-package="com.frankmoley.services.pii"/>
 
-    <mvc:annotation-driven/>
-
     <mvc:annotation-driven>
         <mvc:message-converters register-defaults="false">
-            <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
             <bean class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter" />
         </mvc:message-converters>
     </mvc:annotation-driven>
@@ -22,7 +20,7 @@
 
     <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate" depends-on="mongo">
         <constructor-arg name="mongo" ref="mongo"/>
-        <constructor-arg name="databaseName" value="person-test-pii"/>
+        <constructor-arg name="databaseName" value="person-pii"/>
     </bean>
 
     <mongo:repositories base-package="com.frankmoley.services.pii.data.repository"

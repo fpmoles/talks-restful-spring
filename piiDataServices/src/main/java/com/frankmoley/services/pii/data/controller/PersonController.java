@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.frankmoley.services.pii.data.domain.Person;
 import com.frankmoley.services.pii.data.exception.BadRequestException;
@@ -23,7 +24,7 @@ import com.frankmoley.services.pii.data.repository.PersonRepository;
 /**
  * @author Frank Moley
  */
-@Controller
+@RestController
 @RequestMapping("/persons")
 public class PersonController {
 
@@ -32,7 +33,6 @@ public class PersonController {
 
     private static final String FORWARD_SLASH = "/";
 
-    @ResponseBody
     @RequestMapping(method=RequestMethod.GET)
     public Person findPerson(@RequestParam(value = "displayName")String displayName){
         if(null == displayName || displayName.isEmpty()){
@@ -42,7 +42,6 @@ public class PersonController {
         }
     }
 
-    @ResponseBody
     @RequestMapping(method = RequestMethod.POST)
     public Person addPerson(@RequestBody final Person model, HttpServletRequest request, HttpServletResponse response){
         model.setId(UUID.randomUUID().toString());
@@ -55,7 +54,6 @@ public class PersonController {
         return person;
     }
 
-    @ResponseBody
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Person getPerson(@PathVariable(value="id")String id){
         Person person = this.personRepository.findOne(id);
@@ -65,7 +63,6 @@ public class PersonController {
         return person;
     }
 
-    @ResponseBody
     @RequestMapping(value="/{id}", method=RequestMethod.PUT)
     public Person updatePerson(@PathVariable(value="id")String id, @RequestBody Person person){
         if(null == id || !id.equals(person.getId())){
@@ -74,7 +71,6 @@ public class PersonController {
         return this.personRepository.save(person);
     }
 
-    @ResponseBody
     @RequestMapping(value="/{id}", method=RequestMethod.DELETE)
     public void deletePerson (@PathVariable(value="id")String id){
         if(null == id){

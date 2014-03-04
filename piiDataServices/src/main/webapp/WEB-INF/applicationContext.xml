@@ -8,7 +8,7 @@
 
     <mvc:annotation-driven>
         <mvc:message-converters register-defaults="false">
-            <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
             <bean class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter" />
         </mvc:message-converters>
     </mvc:annotation-driven>
