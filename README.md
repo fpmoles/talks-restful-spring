@@ -6,7 +6,7 @@ Presented by Frank P Moley III
 
 Twitter: @fpmoles
 
-Web: www.frankmoley.com
+Video of this talk: http://www.infoq.com/presentations/rest-web-services-spring-mvc
 
 ## Structure ##
 
